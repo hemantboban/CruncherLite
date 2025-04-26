@@ -1,85 +1,62 @@
-
 # CruncherLite - Custom Wordlist Generator
 
-## Overview
-
-**CruncherLite** is a bash script that generates custom wordlists from an input wordlist file. It applies a variety of patterns including special characters, numerics, and character replacements to generate a wide range of potential password variations.
+CruncherLite is a flexible script that allows you to create customized wordlists by combining words with numerics, special characters, and applying replacements. This script provides options to configure the wordlist generation based on user-defined input such as custom characters, length limits, and keywords.
 
 ## Features
 
-- Generates wordlist variations by appending and prepending special characters and numerics to words.
-- Supports custom special characters, numbers, and character replacements.
-- Handles both uppercase and lowercase first-letter variants automatically.
+- Generate wordlist from an input file or comma-separated list of keywords.
+- Support for adding numerics, special characters, and custom replacements.
+- Option to set minimum and maximum length for generated words.
+- Output the generated wordlist to a custom file.
 
-## Requirements
+## Installation
 
-- A bash environment (Linux/macOS)
-- No additional dependencies required
+No installation required. Just download the script and make it executable.
+
+```bash
+chmod +x cruncherLite.sh
+```
 
 ## Usage
 
-### Basic Command
-
-Run the script with the path to the input wordlist file:
+### 1. Generate Wordlist from Input File
 
 ```bash
-./cruncherLite.sh /path/to/words.txt
+./cruncherLite.sh /path/to/words.txt -c "@,#,$,!" -n "2025,1234" -m 6 -M 12 -o custom_output.txt
 ```
 
-This will generate a custom wordlist named `custom_wordlist.txt` in the same directory.
-
-### Available Options
-
-- **Special Characters (`special_chars`)**: The script includes the following by default: `@`, `#`, `$`, etc.
-- **Numerics (`numerics`)**: The script includes the following by default: `2025`, `1234`, etc.
-- **Replacements**: It applies common replacements such as `a -> @`, `s -> $`, `i -> 1`, etc.
-
-### Sample Commands
-
-1. **Default Command**: Generate a wordlist with default options.
-   ```bash
-   ./cruncherLite.sh /path/to/words.txt
-   ```
-
-2. **Custom Output File**: Specify a custom output file name.
-   ```bash
-   ./cruncherLite.sh /path/to/words.txt -o custom_output.txt
-   ```
-
-3. **Custom Special Characters and Numerics**: Provide custom characters and numerics.
-   ```bash
-   ./cruncherLite.sh /path/to/words.txt -c "@,#,$,!" -n "2025,1234,5678"
-   ```
-
-### Example
-
-If you run the following command with an input file `usernames.txt`:
+### 2. Generate Wordlist from Keywords
 
 ```bash
-./cruncherLite.sh /path/to/usernames.txt
+./cruncherLite.sh -w "admin,user,test" -c "@,#" -n "1234,9999" -m 6 -M 10 -o custom_output.txt
 ```
 
-The generated `custom_wordlist.txt` will contain variations like:
+### 3. Generate Wordlist with Default Settings
 
-```
-admin@2025
-admin#2025
-admin$2025
-admin!2025
-admin%2025
-admin&2025
-admin*2025
-user@2025
-user#2025
-user$2025
-user!2025
-...
+```bash
+./cruncherLite.sh -w "admin,user"
 ```
 
-## Advantages
+## Arguments
 
-- **Customizable**: Easily modify special characters, numerics, and replacements to suit your needs.
-- **Comprehensive Output**: Generates multiple variations of each word with combinations of characters and numerics.
-- **Efficient and Easy to Use**: Just provide an input wordlist, and the script generates the variations automatically.
-- **No Dependencies**: Runs directly in a bash environment without requiring additional software or libraries.
+| Option  | Description                                                                                          |
+| ------- | ---------------------------------------------------------------------------------------------------- |
+| `-w`    | Comma-separated list of keywords to generate the wordlist.                                           |
+| `-c`    | Comma-separated list of special characters to append to or prepend to the words (default: `@,#,$,!`). |
+| `-n`    | Comma-separated list of numerics to append to or prepend to the words (default: `2025,1234`).         |
+| `-m`    | Minimum length of the generated words.                                                                |
+| `-M`    | Maximum length of the generated words.                                                                |
+| `-o`    | Custom output file name for the generated wordlist.                                                   |
 
+## Example
+
+Generate wordlist from an input file (`words.txt`) with special characters `@,#,$`, numerics `2025,1234`, and word length between 6 and 12:
+
+```bash
+./cruncherLite.sh words.txt -c "@,#,$" -n "2025,1234" -m 6 -M 12 -o output.txt
+```
+
+Generate wordlist from a list of keywords (`admin,user,test`), with numerics and a minimum word length of 6:
+
+```bash
+./cruncherLite.sh -w "admin,user,test" -c "@,#" -n "1234,5678" -m 6 -M 10 -o mylist.txt
