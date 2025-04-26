@@ -30,9 +30,9 @@ This will generate a custom wordlist named `custom_wordlist.txt` in the same dir
 
 ### Available Options
 
-- **Special Characters (`special_chars`)**: The script includes the following by default: `@`, `#`, `$`, `!`, `%`, `&`, `*`.
-- **Numerics (`numerics`)**: The script includes the following by default: `2025`, `2024`, `2023`, `123`, `321`, `1234`, `12345`, `007`, `999`, `111`.
-- **Replacements**: It applies common replacements such as `a -> @`, `s -> $`, `i -> 1`, `o -> 0`, `e -> 3`, etc.
+- **Special Characters (`special_chars`)**: The script includes the following by default: `@`, `#`, `$`, etc.
+- **Numerics (`numerics`)**: The script includes the following by default: `2025`, `1234`, etc.
+- **Replacements**: It applies common replacements such as `a -> @`, `s -> $`, `i -> 1`, etc.
 
 ### Sample Commands
 
